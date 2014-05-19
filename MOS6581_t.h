@@ -31,12 +31,12 @@ public:
     /* Selects the register address to read to or write from.
      * Implemented by subclasses.
      */
-    virtual void select_address(byte address) {}
+    virtual void select_address(byte address) const {}
 
     /* Writes the data output to the current register.
      * Implemented by subclasses.
      */
-    virtual void output_data(byte data) {}
+    virtual void output_data(byte data) const {}
 };
 
 
