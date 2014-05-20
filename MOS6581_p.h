@@ -33,7 +33,7 @@ public:
     /* Writes the parallel address pins to the address provided.
      * The MSB is A4, the LSB is A0.
      */
-    void select_address(byte address);
+    void select_address(registers_t address);
 
     /* Writes the parallel data pins with the data provided.
      * The MSB is D7, the LSB is D0.
