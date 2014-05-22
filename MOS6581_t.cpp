@@ -24,5 +24,7 @@ byte MOS6581_t::get_last_data() const
     
 byte MOS6581_t::peek(registers_t address)
 {
+    select_address(address);
+
     
 }
