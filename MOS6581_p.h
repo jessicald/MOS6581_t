@@ -30,12 +30,12 @@ public:
     MOS6581_p(const byte address_pins[ADDR_PIN_COUNT], const byte data_pins[DATA_PIN_COUNT],
               byte _cs_pin, byte r_w_pin);
 
-    /* Writes the parallel address pins to the address provided.
+    /* Writes the address pins to the address provided.
      * The MSB is A4, the LSB is A0.
      */
     void select_address(registers_t address);
 
-    /* Writes the parallel data pins with the data provided.
+    /* Writes the data pins with the data provided.
      * The MSB is D7, the LSB is D0.
      */
     void output_data(byte data);

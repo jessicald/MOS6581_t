@@ -62,26 +62,27 @@ public:
 
 
     /* Accessor method for the stored address. */
-    byte get_last_address() const
-    {
-        return last_address;
-    }
+    byte get_last_address() const;
 
     /* Accessor method for the stored data. */
-    byte get_last_data() const
-    {
-        return last_data;
-    }
+    byte get_last_data() const;
     
     /* Selects the register address to read to or write from.
      * Implemented by subclasses.
      */
-    virtual void select_address(registers_t address) const {}
+    virtual void select_address(registers_t address) const;
 
-    /* Writes the data output to the current register.
+    /* Writes `data` to the current register.
      * Implemented by subclasses.
      */
-    virtual void output_data(byte data) const {}
+    virtual void output_data(byte data) const;
+
+    /* Reads the data from the current register and returns it.
+     * Implemented by subclasses.
+     */
+    virtual byte input_data() const;
+
+    byte peek(registers_t address);
 };
 
 
