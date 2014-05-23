@@ -5,11 +5,11 @@ MOS6581_t::MOS6581_t(byte _cs_pin, byte r_w_pin)
     :_CS(_cs_pin), R_W(r_w_pin)
 {}
 
-void MOS6581_t::select_register(registers_t) const {}
+void MOS6581_t::select_register(registers_t) {}
 
-void MOS6581_t::write_data_pins(byte) const {}
+void MOS6581_t::write_data_pins(byte) {}
 
-byte MOS6581_t::read_data_pins() const {}
+byte MOS6581_t::read_data_pins() {}
 
 
 byte MOS6581_t::get_last_address() const

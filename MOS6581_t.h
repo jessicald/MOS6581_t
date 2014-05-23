@@ -75,17 +75,17 @@ public:
     /* Writes the address pins with the bits of `address`.
      * Implemented by subclasses.
      */
-    virtual void select_register(registers_t address) const;
+    virtual void select_register(registers_t address);
 
     /* Writes the data pins with the bits of `value`.
      * Implemented by subclasses.
      */
-    virtual void write_data_pins(byte value) const;
+    virtual void write_data_pins(byte value);
 
     /* Returns the values read on the data pins as an unsigned eight bit field.
      * Implemented by subclasses.
      */
-    virtual byte read_data_pins() const;
+    virtual byte read_data_pins();
 
 
     /* Implementation of the PEEK command from BASIC.
