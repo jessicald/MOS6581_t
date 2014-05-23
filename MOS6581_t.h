@@ -13,6 +13,7 @@ protected:
 
 public:
 
+    /* Parallel pin counts. */
     static const byte ADDR_PIN_COUNT = 5;
     static const byte DATA_PIN_COUNT = 8;
 
@@ -70,7 +71,7 @@ public:
     /* Accessor method for the stored read. */
     byte get_last_read() const;
     
-    /* Selects the register address to read to or write from.
+    /* Selects the register to read from or write to.
      * Implemented by subclasses.
      */
     virtual void select_register(registers_t address) const;
@@ -80,12 +81,16 @@ public:
      */
     virtual void write_data(byte data) const;
 
-    /* Reads the data from the current register and returns it.
+    /* Returns the data from the current register.
      * Implemented by subclasses.
      */
     virtual byte read_data() const;
 
-    byte peek(registers_t address);
+
+    /* Implementation of the PEEK command from BASIC.
+     * Returns the contents of the register at `address`.
+     */
+    byte PEEK(registers_t address);
 };
 
 

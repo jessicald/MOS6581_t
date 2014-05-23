@@ -27,7 +27,7 @@ byte MOS6581_t::get_last_read() const
     return last_read;
 }
 
-byte MOS6581_t::peek(registers_t address)
+byte MOS6581_t::PEEK(registers_t address)
 {
     digitalWrite(R_W, HIGH);
     select_register(address);
