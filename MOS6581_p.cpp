@@ -22,15 +22,15 @@ void MOS6581_p::select_register(registers_t address)
 }
 
 
-void MOS6581_p::write_data(byte data)
+void MOS6581_p::write_data_pins(byte value)
 {
     for (byte i = 0; i < DATA_PIN_COUNT; i++)
-        digitalWrite(DATA[i], data & (1 << i));
+        digitalWrite(DATA[i], value & (1 << i));
 
-    last_write = data;
+    last_write = value;
 }
 
-byte MOS6581_p::read_data()
+byte MOS6581_p::read_data_pins()
 {
     byte input = 0;
     for (byte i = 0; i < DATA_PIN_COUNT; i++)

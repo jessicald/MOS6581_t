@@ -71,26 +71,31 @@ public:
     /* Accessor method for the stored read. */
     byte get_last_read() const;
     
-    /* Selects the register to read from or write to.
+    /* Writes the address pins with the bits of `address`.
      * Implemented by subclasses.
      */
     virtual void select_register(registers_t address) const;
 
-    /* Writes `data` to the current register.
+    /* Writes the data pins with the bits of `value`.
      * Implemented by subclasses.
      */
-    virtual void write_data(byte data) const;
+    virtual void write_data_pins(byte value) const;
 
-    /* Returns the data from the current register.
+    /* Returns the values read on the data pins as an unsigned eight bit field.
      * Implemented by subclasses.
      */
-    virtual byte read_data() const;
+    virtual byte read_data_pins() const;
 
 
     /* Implementation of the PEEK command from BASIC.
      * Returns the contents of the register at `address`.
      */
     byte PEEK(registers_t address);
+    
+    /* Implementation of the POKE command from BASIC.
+     * Writes the register at `address` with the data `value`.
+     */
+    void POKE(registers_t address, byte value);
 };
 
 

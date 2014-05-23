@@ -38,12 +38,12 @@ public:
     /* Writes the data pins with the data provided.
      * The MSB is D7, the LSB is D0.
      */
-    void write_data(byte data);
+    void write_data_pins(byte value);
 
     /* Reads the data pins of the current register.
      * The MSB is D7, the LSB is D0.
      */
-    byte read_data();
+    byte read_data_pins();
 };
 
 
