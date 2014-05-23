@@ -65,12 +65,13 @@ public:
     /* Accessor method for the stored address. */
     byte get_last_address() const;
 
-    /* Accessor method for the stored write. */
+    /* Accessor method for the stored last write. */
     byte get_last_write() const;
 
-    /* Accessor method for the stored read. */
+    /* Accessor method for the stored last read. */
     byte get_last_read() const;
-    
+
+
     /* Writes the address pins with the bits of `address`.
      * Implemented by subclasses.
      */
