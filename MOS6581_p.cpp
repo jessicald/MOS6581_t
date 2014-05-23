@@ -13,7 +13,7 @@ MOS6581_p::MOS6581_p(const byte* address_pins, const byte* data_pins,
 }
 
 
-void MOS6581_p::select_address(registers_t address)
+void MOS6581_p::select_register(registers_t address)
 {
     for (byte i = 0; i < ADDR_PIN_COUNT; i++)
         digitalWrite(ADDR[i], address & (1 << i));
@@ -22,10 +22,20 @@ void MOS6581_p::select_address(registers_t address)
 }
 
 
-void MOS6581_p::output_data(byte data)
+void MOS6581_p::write_data(byte data)
 {
     for (byte i = 0; i < DATA_PIN_COUNT; i++)
         digitalWrite(DATA[i], data & (1 << i));
 
-    last_data = data;
+    last_write = data;
+}
+
+byte MOS6581_p::read_data()
+{
+    byte input = 0;
+    for (byte i = 0; i < DATA_PIN_COUNT; i++)
+        input |= digitalRead(DATA[i]) << i;
+
+    last_read = input;
+    return input;
 }

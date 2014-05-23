@@ -9,7 +9,7 @@ class MOS6581_t
 {
     /* Base class for the SID, holds all information common to both parallel and serial implementations. */
 protected:
-    byte last_address, last_data;
+    byte last_address, last_write, last_read;
 
 public:
 
@@ -64,23 +64,26 @@ public:
     /* Accessor method for the stored address. */
     byte get_last_address() const;
 
-    /* Accessor method for the stored data. */
-    byte get_last_data() const;
+    /* Accessor method for the stored write. */
+    byte get_last_write() const;
+
+    /* Accessor method for the stored read. */
+    byte get_last_read() const;
     
     /* Selects the register address to read to or write from.
      * Implemented by subclasses.
      */
-    virtual void select_address(registers_t address) const;
+    virtual void select_register(registers_t address) const;
 
     /* Writes `data` to the current register.
      * Implemented by subclasses.
      */
-    virtual void output_data(byte data) const;
+    virtual void write_data(byte data) const;
 
     /* Reads the data from the current register and returns it.
      * Implemented by subclasses.
      */
-    virtual byte input_data() const;
+    virtual byte read_data() const;
 
     byte peek(registers_t address);
 };

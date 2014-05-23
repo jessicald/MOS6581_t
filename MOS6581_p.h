@@ -33,12 +33,17 @@ public:
     /* Writes the address pins to the address provided.
      * The MSB is A4, the LSB is A0.
      */
-    void select_address(registers_t address);
+    void select_register(registers_t address);
 
     /* Writes the data pins with the data provided.
      * The MSB is D7, the LSB is D0.
      */
-    void output_data(byte data);
+    void write_data(byte data);
+
+    /* Reads the data pins of the current register.
+     * The MSB is D7, the LSB is D0.
+     */
+    byte read_data();
 };
 
 
