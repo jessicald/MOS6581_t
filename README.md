@@ -20,3 +20,14 @@ Resources
 [U.S. Patent 4,677,890: Sound interface circuit](http://www.google.com/patents/US4677890)
 
 [Generate a Clock Signal with AVR ATmega](http://www.bot-thoughts.com/2011/06/generate-clock-signal-with-avr-atmega.html)
+
+[Arduino - Midi](http://arduino.cc/en/Tutorial/Midi)
+
+[Arduino Playground - MIDILibrary](http://playground.arduino.cc/Main/MIDILibrary)
+
+
+
+Extras
+------
+
+[MIDIbox SID](http://www.ucapps.de/midibox_sid.html)
