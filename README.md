@@ -13,7 +13,7 @@ An Arduino library of classes and associated methods for controlling a MOS Techn
 Resources
 ---------
 
-[MOS Technology SID - Wikipedia, the free encyclopedia](http://en.wikipedia.org/wiki/MOS_Technology_SID)
+[MOS Technology SID - Wikipedia, the free encyclopedia](https://en.wikipedia.org/wiki/MOS_Technology_SID)
 
 [Commodore SID 6581 Datasheet](http://www.waitingforfriday.com/index.php/Commodore_SID_6581_Datasheet)
 
@@ -29,5 +29,7 @@ Resources
 
 Extras
 ------
+
+[Category:MOS Technology SID - Wikimedia Commons](https://commons.wikimedia.org/wiki/Category:MOS_Technology_SID)
 
 [MIDIbox SID](http://www.ucapps.de/midibox_sid.html)
