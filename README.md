@@ -1,9 +1,9 @@
 MOS6581_t
 =========
 
-An Arduino library of classes and associated methods for controlling a MOS Technologies 6581 or 8580 Sound Interface Device (SID).
+An Arduino library of classes and associated methods for controlling a MOS Technology 6581 or 8580 Sound Interface Device (SID).
 
-![A MOS 6581 chip soldered in a printed circuit board.](http://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/MOS6581_chtaube061229.jpg/320px-MOS6581_chtaube061229.jpg "")
+![A MOS 6581 SID chip soldered in a printed circuit board, surrounded by through hole components.](http://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/MOS6581_chtaube061229.jpg/320px-MOS6581_chtaube061229.jpg "")
 
 Resources
 ---------
