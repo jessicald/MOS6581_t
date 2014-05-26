@@ -53,3 +53,24 @@ void MOS6581_t::POKE(registers_t address, byte value)
 
     return;
 }
+
+/* http://www.bot-thoughts.com/2011/06/generate-clock-signal-with-avr-atmega.html */
+void MOS6581_t::start_clock(byte o2_pin)
+{
+    O2 = o2_pin;
+    // Set Clock to Output
+    pinMode(O2, OUTPUT);
+
+    TCNT1=0;
+    // Toggle OC1A on Compare Match
+    TCCR1A = 0x00;
+    bitSet(TCCR1A, COM1A0);
+    // Clear Timer on Compare Match
+    TCCR1B = 0x00;
+    bitSet(TCCR1B, WGM12);
+    // Set frequency (1 MHz)
+    OCR1A = 8;
+    // No prescaling
+    bitSet(TCCR1B, CS10);
+}
+

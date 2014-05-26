@@ -10,6 +10,7 @@ class MOS6581_t
     /* Base class for the SID, holds all information common to both parallel and serial implementations. */
 protected:
     byte last_address, last_write, last_read;
+    byte O2;
 
 public:
 
@@ -97,6 +98,12 @@ public:
      * Writes the register at `address` with the data `value`.
      */
     void POKE(registers_t address, byte value);
+
+    /* Generates a 1 MHz clock signal for the SID on pin 9 of the Arduino.
+     * TODO:  Allow selection of pin (there are only certain ones that will respond
+     * TODO:  to the Compare Match Register.
+     */
+    void start_clock(byte o2_pin);
 };
 
 
