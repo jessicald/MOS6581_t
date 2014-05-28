@@ -3,7 +3,7 @@ MOS6581_t
 
 An Arduino library of classes and associated methods for controlling a MOS Technology 6581 or 8580 Sound Interface Device (SID).
 
-![A MOS 6581 SID chip soldered in a printed circuit board, surrounded by through hole components.](http://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/MOS6581_chtaube061229.jpg/320px-MOS6581_chtaube061229.jpg "A MOS 6581 sound chip from a Commodore 64 main board")
+![A MOS 6581 Sound Interface Device chip soldered in a printed circuit board, surrounded by soldered through hole components.](http://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/MOS6581_chtaube061229.jpg/320px-MOS6581_chtaube061229.jpg "A MOS 6581 sound chip from a Commodore 64 main board")
 
 
 ######[Photo](https://commons.wikimedia.org/wiki/File:MOS6581_chtaube061229.jpg) by Christian Taube, licensed under [CC BY-SA 2.5](https://creativecommons.org/licenses/by-sa/2.5/deed.en)
