@@ -85,29 +85,69 @@ void MOS6581_t::POKE(registers_t address, byte value)
 
 
 /* http://www.bot-thoughts.com/2011/06/generate-clock-signal-with-avr-atmega.html */
-void MOS6581_t::start_clock(byte o2_pin)
+int MOS6581_t::start_clock(byte o2_pin)
 {
+    volatile void *timer_control_a_r, *timer_control_b_r, *compare_match_value_r;
+    byte compare_match_output;
+
+    switch (o2_pin)
+    {
+    case 9:
+        timer_control_a_r = &TCCR1A;
+        timer_control_b_r = &TCCR1B;
+        compare_match_output = COM1A0;
+        compare_match_value_r = &OCR1A;
+        break;
+    case 10:
+        timer_control_a_r = &TCCR1A;
+        timer_control_b_r = &TCCR1B;
+        compare_match_output = COM1B0;
+        compare_match_value_r = &OCR1B;
+        break;
+    case 11:
+        timer_control_a_r = &TCCR2A;
+        timer_control_b_r = &TCCR2B;
+        compare_match_output = COM2A0;
+        compare_match_value_r = &OCR2A;
+        break;
+    case 3:
+        timer_control_a_r = &TCCR2A;
+        timer_control_b_r = &TCCR2B;
+        compare_match_output = COM2B0;
+        compare_match_value_r = &OCR2B;
+        break;
+    default:
+        return o2_pin;
+    }
+
+
     O2 = o2_pin;
-    // Set Clock to Output
     pinMode(O2, OUTPUT);
-
-    // Initialize timer
-    TCNT1 = 0;
-    // Set frequency (1 MHz)
-    OCR1A = 8;
-
-
-    // No prescaling
-    bitSet(TCCR1B, CS10);
-
-    // (3, OC2B), (5, OC0B), (6, OC0A), (9, OC1A), (10, OC1B), (11, OC2A)
     
-    // Toggle OC1A on Compare Match
-    TCCR1A = 0x00;
-    bitSet(TCCR1A, COM1A0);
-    // Clear Timer on Compare Match
-    TCCR1B = 0x00;
-    bitSet(TCCR1B, WGM12);
+    // // /* Initialize timer */
+    // // TCNT1 = 0;
+    // /* Toggle OC1A and Clear Timer on Compare Match */
+    // TCCR1A = 0x00 | _BV(COM1A0) | _BV(WGM12);    /* No prescaling */
+    // TCCR1B = 0x00 | _BV(CS10);
+    // /* Set frequency (1 MHz) */
+    // OCR1A = 8;
 
+    /* Toggle OC1A and Clear Timer on Compare Match */
+    
+    *static_cast<volatile byte*>(timer_control_a_r) = 0 | _BV(compare_match_output) | _BV(WGM12);    /* No prescaling */
+    *static_cast<volatile byte*>(timer_control_b_r) = 0 | _BV(CS10);
+    /* Set frequency (1 MHz) */
+    *static_cast<volatile byte*>(compare_match_value_r) = 8;
+    
+    // (3, OC2B), (5, OC0B), (6, OC0A), (9, OC1A), (10, OC1B), (11, OC2A)
+
+
+
+    // /* Clear Timer on Compare Match */
+    // // TCCR1B = 0x00;
+    // // bitSet(TCCR1B, WGM12);
+    // TCCR1B = 0x00 | _BV(WGM12);
+
+    return 0;
 }
 

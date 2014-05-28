@@ -102,8 +102,10 @@ public:
     /* Generates a 1 MHz clock signal for the SID on pin 9 of the Arduino.
      * TODO:  Allow selection of pin (there are only certain ones that will respond
      * TODO:  to the Compare Match Register.
+     * Returns 0 if successful, or o2_pin if not.
+     * 3, 9, 10, 11
      */
-    void start_clock(byte o2_pin);
+    int start_clock(byte o2_pin);
 };
 
 
