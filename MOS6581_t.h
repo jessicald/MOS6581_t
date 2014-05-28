@@ -99,13 +99,15 @@ public:
      */
     void POKE(registers_t address, byte value);
 
-    /* Generates a 1 MHz clock signal for the SID on pin 9 of the Arduino.
-     * TODO:  Allow selection of pin (there are only certain ones that will respond
-     * TODO:  to the Compare Match Register.
-     * Returns 0 if successful, or o2_pin if not.
-     * 3, 9, 10, 11
+    /* Generates a 1 MHz clock signal for the SID using AVR's hardware timers.
+     * Returns 0 if successful or `o2_pin` if not.
+     * Valid values of `o2_pin`:  3, 9, 10, 11
+     *
+     * (These pins are valid for the ATmega168/328. On these versions of Arduino,
+     * pins 9 and 10 use Timer1, 3 and 11 use Timer2.  Pin 11 is also used by the ICSP header.
+     * Keep these in mind if using other libraries or an external programmer.)
      */
-    int start_clock(byte o2_pin);
+    byte start_clock(byte o2_pin);
 };
 
 
