@@ -87,7 +87,7 @@ void MOS6581_t::POKE(registers_t address, byte value)
 /* http://www.bot-thoughts.com/2011/06/generate-clock-signal-with-avr-atmega.html */
 int MOS6581_t::start_clock(byte o2_pin)
 {
-    volatile void *timer_control_a_r, *timer_control_b_r, *compare_match_value_r;
+    volatile byte *timer_control_a_r, *timer_control_b_r, *compare_match_value_r;
     byte compare_match_output;
 
     switch (o2_pin)
@@ -96,13 +96,13 @@ int MOS6581_t::start_clock(byte o2_pin)
         timer_control_a_r = &TCCR1A;
         timer_control_b_r = &TCCR1B;
         compare_match_output = COM1A0;
-        compare_match_value_r = &OCR1A;
+        compare_match_value_r = reinterpret_cast<volatile byte*>(&OCR1A);
         break;
     case 10:
         timer_control_a_r = &TCCR1A;
         timer_control_b_r = &TCCR1B;
         compare_match_output = COM1B0;
-        compare_match_value_r = &OCR1B;
+        compare_match_value_r = reinterpret_cast<volatile byte*>(&OCR1B);
         break;
     case 11:
         timer_control_a_r = &TCCR2A;
@@ -133,11 +133,11 @@ int MOS6581_t::start_clock(byte o2_pin)
     // OCR1A = 8;
 
     /* Toggle OC1A and Clear Timer on Compare Match */
-    
-    *static_cast<volatile byte*>(timer_control_a_r) = 0 | _BV(compare_match_output) | _BV(WGM12);    /* No prescaling */
-    *static_cast<volatile byte*>(timer_control_b_r) = 0 | _BV(CS10);
+    *(timer_control_a_r) = 0 | _BV(compare_match_output) | _BV(WGM12);
+    /* No prescaling */
+    *(timer_control_b_r) = 0 | _BV(CS10);
     /* Set frequency (1 MHz) */
-    *static_cast<volatile byte*>(compare_match_value_r) = 8;
+    *(compare_match_value_r) = 8;
     
     // (3, OC2B), (5, OC0B), (6, OC0A), (9, OC1A), (10, OC1B), (11, OC2A)
 
