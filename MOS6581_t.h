@@ -103,7 +103,7 @@ public:
      * Returns 0 if successful or `o2_pin` if not.
      * Valid values of `o2_pin`:  3, 9, 10, 11
      *
-     * (These pins are valid for the ATmega168/328. On these versions of Arduino,
+     * (These pins are only valid for the ATmega168/328. On these versions of Arduino,
      * pins 9 and 10 use Timer1, 3 and 11 use Timer2.  Pin 11 is also used by the ICSP header.
      * Keep these in mind if using other libraries or an external programmer.)
      */
