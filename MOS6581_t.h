@@ -108,6 +108,7 @@ public:
      * Keep these in mind if using other libraries or an external programmer.)
      */
     byte start_clock(byte o2_pin);
+    // byte start_clock(byte o2_pin, byte timer);
 };
 
 
