@@ -98,6 +98,8 @@ byte MOS6581_t::start_clock(byte o2_pin)
      *
      * TODO:  While the ATmega168/328 is the most prolific Arduino type, this function
      * should be generalized for versions of Arduino with different pin mappings.
+     * Will probably require manually specifying the Timer separately from the pin,
+     * and putting the responsibility on the programmer to make sure they work together.
      */
 
     switch (o2_pin)
